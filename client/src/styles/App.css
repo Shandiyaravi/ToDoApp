@@ -14,7 +14,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height:auto;
   background-color: #1c1c4b;
   color: #e9e9fa;
 }
@@ -49,8 +49,7 @@ button:active {
 
 .app-container {
   width:80vw;
-  
-  margin:auto;
+  margin:2rem;
   display: flex;
   flex-direction: column;
   padding: 3rem 1rem;

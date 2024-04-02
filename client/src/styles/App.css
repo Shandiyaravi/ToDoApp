@@ -15,8 +15,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
-  padding: 0;
   background-color: #1c1c4b;
   color: #e9e9fa;
 }
@@ -50,7 +48,9 @@ button:active {
 /* -- App -- */
 
 .app-container {
-  min-width: 45rem;
+  width:80vw;
+  
+  margin:auto;
   display: flex;
   flex-direction: column;
   padding: 3rem 1rem;

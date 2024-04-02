@@ -1,5 +1,6 @@
 input {
-  min-width: 75%;
+  min-width: 60%;
+  max-width: 80%;
 }
 
 form {
@@ -15,6 +16,7 @@ form {
 .title-auth {
   font-size: 2.5rem;
   margin: 2rem;
+  
 }
 
 .submit-button,
@@ -64,3 +66,12 @@ form {
   font-size: 1rem;
   color: #b468fb;
 }
+
+@media (max-width: 768px) {
+  .title-auth {
+    font-size: 2rem;
+  }
+  
+}
+
+

@@ -8,11 +8,17 @@ const serverUrl = import.meta.env.VITE_SERVER_URL;
 
 function ListItem({ task, getData }) {
   const [showModal, setShowModal] = useState(false);
+  const [cookies, setCookie, removeCookie] = useCookies(null);
+  const authToken = cookies.AuthToken;
 
   const deleteItem = async () => {
     try {
       const response = await fetch(`${serverUrl}/todos/${task.id}`, {
         method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          authorization: authToken,
+        },
       });
       if (response.status === 200) {
         getData();
@@ -25,12 +31,14 @@ function ListItem({ task, getData }) {
   return (
     <div className='listItem-container'>
       <div className='wrapper'>
-        <div className='info-container'>
-          <TickIcon />
-          <p className='task-title'>{task.title}</p>
-        </div>
-        <div className='progressBar-container'>
-          <ProgressBar progress={task.progress} />
+        <div className='data-container'>
+          <div className='info-container'>
+            <TickIcon />
+            <p className='task-title'>{task.title}</p>
+          </div>
+          <div className='progressBar-container'>
+            <ProgressBar progress={task.progress} />
+          </div>
         </div>
         <div className='button-container'>
           <button className='edit-button' onClick={() => setShowModal(true)}>

@@ -5,12 +5,15 @@ import { useCookies } from 'react-cookie';
 
 function ListHeader({ listName, getData }) {
   const [showModal, setShowModal] = useState(false);
-  const [cookies, setCookies, removeCookies] = useCookies(null);
+  const [cookies, setCookies, removeCookies] = useCookies([
+    'Email',
+    'AuthToken',
+  ]);
 
   const logOut = () => {
     console.log('Logging out');
-    removeCookies('Email');
-    removeCookies('AuthToken');
+    removeCookies('Email', { path: '/' });
+    removeCookies('AuthToken', { path: '/' });
     window.location.reload();
   };
 

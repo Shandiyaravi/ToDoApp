@@ -7,6 +7,7 @@ const serverUrl = import.meta.env.VITE_SERVER_URL;
 function Modal({ mode, setShowModal, task, getData }) {
   const editMode = mode === 'edit' ? true : false;
   const [cookies, setCookies, removeCookies] = useCookies(null);
+  const authToken = cookies.AuthToken;
 
   const [data, setData] = useState({
     user_email: editMode ? task.user_email : cookies.Email,
@@ -20,7 +21,10 @@ function Modal({ mode, setShowModal, task, getData }) {
     try {
       const response = await fetch(`${serverUrl}/todos/${task.id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          authorization: authToken,
+        },
         body: JSON.stringify({
           ...data,
           title: data.title.charAt(0).toUpperCase() + data.title.slice(1),
@@ -40,7 +44,10 @@ function Modal({ mode, setShowModal, task, getData }) {
     try {
       const response = await fetch(`${serverUrl}/todos`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          authorization: authToken,
+        },
         body: JSON.stringify({
           ...data,
           title: data.title.charAt(0).toUpperCase() + data.title.slice(1),

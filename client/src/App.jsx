@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import { useCookies } from "react-cookie";
-import ListHeader from "./components/ListHeader";
-import ListItem from "./components/ListItem";
-import Auth from "./components/Auth";
-import "./styles/App.css";
+import { useState, useEffect } from 'react';
+import { useCookies } from 'react-cookie';
+import ListHeader from './components/ListHeader';
+import ListItem from './components/ListItem';
+import Auth from './components/Auth';
+import './styles/App.css';
 const serverUrl = import.meta.env.VITE_SERVER_URL;
 
 function App() {
@@ -12,9 +12,15 @@ function App() {
   const userEmail = cookies.Email;
   const [task, setTask] = useState(null);
 
+  console.log('authToken', authToken);
+
   const getData = async () => {
     try {
-      const response = await fetch(`${serverUrl}/todos/${userEmail}`);
+      const response = await fetch(`${serverUrl}/todos`, {
+        headers: {
+          authorization: authToken,
+        },
+      });
       const json = await response.json();
       setTask(json);
     } catch (err) {
@@ -23,20 +29,23 @@ function App() {
   };
 
   useEffect(() => {
-    getData();
+    if (authToken) {
+      getData();
+    }
   }, []);
 
   console.log(task);
 
-  const sortedTasks = task?.sort((a, b) => new Date(a.date) - new Date(b.date));
+  const sortedTasks =
+    task && task?.sort((a, b) => new Date(a.date) - new Date(b.date));
 
   return (
     <>
-      <div className="app-container">
+      <div className='app-container'>
         {!authToken && <Auth />}
         {authToken && (
           <>
-            <ListHeader listName={"Your ToDo List"} getData={getData} />
+            <ListHeader listName={'Your ToDo List'} getData={getData} />
             {sortedTasks?.map((task) => (
               <ListItem key={task.id} task={task} getData={getData} />
             ))}

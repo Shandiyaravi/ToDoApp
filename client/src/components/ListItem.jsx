@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useCookies } from 'react-cookie';
 import ProgressBar from './ProgressBar';
 import TickIcon from './TickIcon';
 import Modal from './Modal';

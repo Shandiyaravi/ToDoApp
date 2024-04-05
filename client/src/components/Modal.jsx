@@ -97,7 +97,7 @@ function Modal({ mode, setShowModal, task, getData }) {
             id='range'
             required
             min='0'
-            max='100'
+            max='90'
             name='progress'
             value={data.progress}
             onChange={handleChange}

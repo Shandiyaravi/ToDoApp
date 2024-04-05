@@ -44,22 +44,17 @@
   display: flex;
   align-items: center;
 }
-
 .outer-bar {
   height: 1rem;
   background-color: #6cfcfc2c;
-  width: 10rem;
-  flex-shrink: 0;
+  width: 100%; /* Set width to 100% to match inner bar */
   border-radius: 7px;
-  
 }
 
 .inner-bar {
-  height: 1rem;
-  width: 0;
-  background-color: #6cfcfc;
+  height: 100%;
+  background-color: #6cfcfc; 
   border-radius: 7px;
-  
 }
 
 .button-container {

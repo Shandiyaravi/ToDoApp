@@ -10,6 +10,10 @@ const secretKey = process.env.JWT_SECRET;
 app.use(cors());
 app.use(express.json());
 
+app.use(cors({
+  origin: 'https://to-do-app-lcha.vercel.app'
+}));
+
 // Middleware function to validate JWT token
 const verifyToken = (req, res, next) => {
   const token = req.headers['authorization'];

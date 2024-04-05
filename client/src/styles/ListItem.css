@@ -59,6 +59,7 @@
   width: 0;
   background-color: #6cfcfc;
   border-radius: 7px;
+  max-width: 100%;
 }
 
 .button-container {

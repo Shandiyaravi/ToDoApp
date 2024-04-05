@@ -1,38 +1,91 @@
 .overlay-container {
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
   width: 100vw;
-  height: 100vh;
-  background-color: rgba(28, 28, 75, 0.55); 
+  height:100vh;
+  background-color: #1c1c4b8d;
+  box-shadow: 0 6px 24px #2e1348a8;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999; 
+  color: #1c1c4b;
 }
 
 .modal-container {
-  max-width: 90vw; 
-  width: 400px; 
-  height: auto; 
+ max-width: 100%;
+  height: 23rem;
   background-color: #e9e9fa;
-  padding: 20px;
+  padding: 40px;
   border-radius: 10px;
-  box-shadow: 0 6px 24px rgba(164, 66, 255, 0.65); 
+  box-shadow: 0 6px 24px #a442ffa8;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-container,
+.title-container {
+  display: flex;
+  text-align: center;
+}
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-container h3 {
+  margin: 1rem;
+  font-size: 1.5rem;
 }
 
 .x-button {
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+  color: #f90db6;
   font-size: 1.3rem;
+  display: flex;
+  justify-content: start;
+  margin: 0;
+  padding: 0;
 }
 
-@media screen and (max-width: 600px) {
-  .modal-container {
-    width: 90%;
-    max-width: 90%;
-    padding: 10px;
-  }
+.modal .title-container button:active {
+  transform: scale(0.95);
+}
 
-  .x-button {
-    font-size: 1rem; 
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-bar {
+  color: #1c1c4b;
+  margin: 0.5rem 0 0 0rem;
+}
+
+#submit-button {
+  margin: 1rem 0;
+  border: 1 solid #a442ff;
+}
+
+#submit-button:hover {
+  transform: scale(1.05);
+}
+
+#submit-button:active {
+  transform: scale(1);
+}
+
+.modal label {
+  font-size: 13px;
+}
+
+
+@media screen and (max-width: 400px){
+  .modal-container {
+    width:20rem;
+    height: 25rem;
   }
 }

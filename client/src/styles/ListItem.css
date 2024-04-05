@@ -48,7 +48,7 @@
 .outer-bar {
   height: 1rem;
   background-color: #6cfcfc2c;
-  width: 10rem;
+  width: auto; 
   flex-shrink: 0;
   border-radius: 7px;
   margin: 0rem 1rem;
@@ -56,10 +56,10 @@
 
 .inner-bar {
   height: 1rem;
-  width: 0;
+  width: 100%;
   background-color: #6cfcfc;
   border-radius: 7px;
-  max-width: 100%;
+  
 }
 
 .button-container {

@@ -66,10 +66,11 @@ function Modal({ mode, setShowModal, task, getData }) {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setData((data) => ({ ...data, [name]: value }));
-    console.log(data);
-  };
+    const newValue =
+      name === 'progress' ? Math.min(Math.max(value, 0), 100) : value;
 
+    setData((data) => ({ ...data, [name]: newValue }));
+  };
   return (
     <div className='overlay-container'>
       <div className='modal-container'>

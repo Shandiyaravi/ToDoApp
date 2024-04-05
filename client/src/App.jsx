@@ -10,7 +10,7 @@ function App() {
   const [cookies, setCookie, removeCookie] = useCookies(null);
   const authToken = cookies.AuthToken;
   const userEmail = cookies.Email;
-  const [task, setTask] = useState([]);
+  const [task, setTask] = useState(null);
 
   console.log('authToken', authToken);
 
@@ -37,9 +37,7 @@ function App() {
   console.log(task);
 
   const sortedTasks =
-    Array.isArray(task) && task.length > 0
-      ? [...task].sort((a, b) => new Date(a.date) - new Date(b.date))
-      : [];
+    task && task?.sort((a, b) => new Date(a.date) - new Date(b.date));
 
   return (
     <>

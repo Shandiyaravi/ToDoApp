@@ -1,3 +1,87 @@
+.overlay-container {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1c1c4b8d;
+  box-shadow: 0 6px 24px #2e1348a8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1c1c4b;
+}
+
+.modal-container {
+  max-width: 100%;
+  height: 23rem;
+  background-color: #e9e9fa;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 6px 24px #a442ffa8;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-container,
+.title-container {
+  display: flex;
+  text-align: center;
+}
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-container h3 {
+  margin: 1rem;
+  font-size: 1.5rem;
+}
+
+.x-button {
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+  color: #f90db6;
+  font-size: 1.3rem;
+  display: flex;
+  justify-content: start;
+  margin: 0;
+  padding: 0;
+}
+
+.modal .title-container button:active {
+  transform: scale(0.95);
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-bar {
+  color: #1c1c4b;
+  margin: 0.5rem 0 0 0rem;
+}
+
+#submit-button {
+  margin: 1rem 0;
+  border: 1 solid #a442ff;
+}
+
+#submit-button:hover {
+  transform: scale(1.05);
+}
+
+#submit-button:active {
+  transform: scale(1);
+}
+
+.modal label {
+  font-size: 13px;
+}
+
 .listItem-container {
   margin: 5px 0;
   padding: 5px;
@@ -5,7 +89,6 @@
   background-color: #a23effb1;
   box-shadow: 0 3px 10px #552286a8;
   max-width: 100%;
-  
 }
 
 .wrapper {
@@ -32,7 +115,7 @@
   stroke-miterlimit: 10;
 }
 
-.task-title  {
+.task-title {
   font-size: 1.5rem;
   font-weight: 800;
   font-size: 1rem;
@@ -48,7 +131,8 @@
 .outer-bar {
   height: 1rem;
   background-color: #6cfcfc2c;
-  width: 10rem;
+  width: 90%; /* Adjust as needed */
+  max-width: 100%;
   flex-shrink: 0;
   border-radius: 7px;
   margin: 0rem 1rem;
@@ -77,16 +161,13 @@
   margin: 0.5rem;
 }
 
-
 @media screen and (max-width: 400px) {
-
   .button-container {
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  .outer-bar{
-    width: 8rem;
+  .outer-bar {
+    width: 80%;
   }
-  
 }

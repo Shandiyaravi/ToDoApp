@@ -5,16 +5,18 @@ import '../styles/App.css';
 const serverUrl = import.meta.env.VITE_SERVER_URL;
 
 function Modal({ mode, setShowModal, task, getData }) {
-  const editMode = mode === 'edit' ? true : false;
-  const [cookies, setCookies, removeCookies] = useCookies(null);
-  const authToken = cookies.AuthToken;
+  const editMode = mode === 'edit';
+  const [cookies] = useCookies(['AuthToken']);
+  const authToken = cookies.AuthToken || '';
 
-  const [data, setData] = useState({
-    user_email: editMode ? task.user_email : cookies.Email,
+  const initialData = {
+    user_email: editMode ? task.user_email : cookies.Email || '',
     title: editMode ? task.title : '',
     progress: editMode ? task.progress : 50,
     date: editMode ? task.date : new Date(),
-  });
+  };
+
+  const [data, setData] = useState(initialData);
 
   const editData = async (e) => {
     e.preventDefault();
@@ -23,7 +25,7 @@ function Modal({ mode, setShowModal, task, getData }) {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          authorization: authToken,
+          Authorization: `Bearer ${authToken}`,
         },
         body: JSON.stringify({
           ...data,
@@ -46,7 +48,7 @@ function Modal({ mode, setShowModal, task, getData }) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          authorization: authToken,
+          Authorization: `Bearer ${authToken}`,
         },
         body: JSON.stringify({
           ...data,
@@ -65,9 +67,10 @@ function Modal({ mode, setShowModal, task, getData }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    setData((data) => ({ ...data, [name]: value }));
-    console.log(data);
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
   return (
